@@ -16,7 +16,16 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $view = $this->load->view('index', array('_user' => $this->_user), true);
+        $_data = null;
+
+        if ($this->_user->id > 0) {
+            $_data['services'] = $this->db->select('*')
+                ->from('services')
+                ->get()
+                ->result();
+        }
+
+        $view = $this->load->view('index', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
     }
 }
