@@ -1,4 +1,13 @@
 <?php
+
+/**
+ *
+ * Composer Inclusion
+ *
+ */
+include ('vendor/autoload.php');
+
+
 /**
  * CodeIgniter
  *
