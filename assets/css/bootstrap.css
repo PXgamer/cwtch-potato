@@ -5513,6 +5513,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 }
 
+.navbar-dark {
+    display: block;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+}
+
 .navbar-default {
     background-color: #3a3f44;
     border-color: #2b2e32;
@@ -5525,7 +5531,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
     color: #ffffff;
-    background-color: none;
+    background-color: transparent;
 }
 
 .navbar-default .navbar-text {
