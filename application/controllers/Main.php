@@ -5,6 +5,15 @@ class Main extends CI_Controller
 {
     private $_user;
 
+    function __construct()
+    {
+        parent::__construct();
+
+        $this->_user = $this->u->getUserFromSession();
+
+        $this->_is_ajax = isset($_POST['is_ajax']);
+    }
+
     public function index()
     {
         $view = $this->load->view('index', array('_user' => $this->_user), true);
