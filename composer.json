@@ -1,0 +1,15 @@
+{
+    "name": "pxgamer/cwtch-potato",
+    "description": "A database of chili peppers.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PXgamer",
+            "email": "owzie123@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    }
+}
