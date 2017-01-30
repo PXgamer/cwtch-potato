@@ -9,6 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  tmdb_key - Your API key for The Movie Database API
 |
  */
+$config['trakt_client_id'] = '';
+$config['trakt_client_secret'] = '';
 $config['tmdb_key'] = '';
 $config['tmdb_poster_size'] = 1;
 
