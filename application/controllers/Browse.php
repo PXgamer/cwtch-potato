@@ -22,7 +22,7 @@ class Browse extends CI_Controller
         $page_num = $this->uri->segment(3) ?? 1;
 
         $tokens['tmdb'] = $this->config->item('tmdb_key');
-        if ($tokens['tmdb'] !== '') {
+        if ($tokens['tmdb'] ?? '' !== '') {
             $token = new \Tmdb\ApiToken($tokens['tmdb']);
             $tmdb = new \Tmdb\Client($token);
 
@@ -38,7 +38,7 @@ class Browse extends CI_Controller
         $this->paginator->initialize(array(
             'base_url' => "/browse/movies/",
             'per_page' => 20,
-            'total_rows' => $_data['tmdb']['results']['movies']['total_results'],
+            'total_rows' => $_data['tmdb']['results']['movies']['total_results'] ?? null,
             'cur_page' => $page_num
         ));
 
@@ -54,7 +54,7 @@ class Browse extends CI_Controller
         $page_num = $this->uri->segment(3) ?? 1;
 
         $tokens['tmdb'] = $this->config->item('tmdb_key');
-        if ($tokens['tmdb'] !== '') {
+        if ($tokens['tmdb'] ?? '' !== '') {
             $token = new \Tmdb\ApiToken($tokens['tmdb']);
             $tmdb = new \Tmdb\Client($token);
 
@@ -70,7 +70,7 @@ class Browse extends CI_Controller
         $this->paginator->initialize(array(
             'base_url' => "/browse/tv/",
             'per_page' => 20,
-            'total_rows' => $_data['tmdb']['results']['tv']['total_results'],
+            'total_rows' => $_data['tmdb']['results']['tv']['total_results'] ?? null,
             'cur_page' => $page_num
         ));
 
