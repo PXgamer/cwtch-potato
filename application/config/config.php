@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 $config['trakt_client_id'] = '';
 $config['trakt_client_secret'] = '';
+$config['igdb_key'] = '';
 $config['tmdb_key'] = '';
 $config['tmdb_poster_size'] = 1;
 
