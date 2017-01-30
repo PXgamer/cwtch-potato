@@ -1,6 +1,6 @@
 {
     "name": "pxgamer/cwtch-potato",
-    "description": "A database of chili peppers.",
+    "description": "Cwtch Potato is a backwards search for torrents.",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -10,6 +10,6 @@
         }
     ],
     "require": {
-        "php": ">=5.5"
+        "php": ">=7.0"
     }
 }
