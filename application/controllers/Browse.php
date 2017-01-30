@@ -14,6 +14,18 @@ class Browse extends CI_Controller
         $this->_is_ajax = isset($_POST['is_ajax']);
     }
 
+    public function index()
+    {
+        $_data = [
+            'movies' => ($this->config->item('tmdb_key') !== '' ? true : false),
+            'tv' => ($this->config->item('tmdb_key') !== '' ? true : false),
+            'games' => ($this->config->item('igdb_key') !== '' ? true : false),
+        ];
+
+        $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
+        $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
+    }
+
     public function movies()
     {
         $_data = [];
@@ -42,7 +54,7 @@ class Browse extends CI_Controller
             'cur_page' => $page_num
         ));
 
-        $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
+        $view = $this->load->view('browse/browse', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
     }
 
@@ -74,7 +86,7 @@ class Browse extends CI_Controller
             'cur_page' => $page_num
         ));
 
-        $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
+        $view = $this->load->view('browse/browse', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
     }
 
@@ -98,7 +110,7 @@ class Browse extends CI_Controller
             'cur_page' => $page_num
         ));
 
-        $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
+        $view = $this->load->view('browse/browse', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
     }
 }
