@@ -38,7 +38,7 @@ if ($_data['tmdb'] ?? false) {
                            data-release="<?= $result['first_release_date'] ?? $result['created_at'] ?? '' ?>"
                            data-votes="<?= $result['popularity'] ?? '' ?>">
                             <img class="img-rounded padding-tb-5px"
-                                 src="<?= (isset($result['cover']->url)) ? $result['cover']->url : '/assets/img/no_poster.png' ?>"/>
+                                 src="<?= (isset($result['cover']->url)) ? $result['cover']->url : '/assets/img/no_poster_game.png' ?>"/>
                         </a>
                     </li>
                     <?php
