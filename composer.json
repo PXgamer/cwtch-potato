@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "php-tmdb/api": "2.1.7"
+        "php-tmdb/api": "2.1.7",
+        "ynotna/igdb-php": "dev-master"
     }
 }

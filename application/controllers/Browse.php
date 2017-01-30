@@ -77,4 +77,28 @@ class Browse extends CI_Controller
         $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
     }
+
+    public function games()
+    {
+        $_data = [];
+        $_data['title'] = 'Games';
+
+        $page_num = $this->uri->segment(3) ?? 1;
+
+        $tokens['igdb'] = $this->config->item('igdb_key');
+        if ($tokens['igdb'] ?? '' !== '') {
+            $igdb = new \YnotnA\Igdb\IgdbApi($tokens['igdb']);
+
+            $_data['igdb']['results']['games'] = $igdb->getGames(null, [], 20, $page_num);
+        }
+        $this->paginator->initialize(array(
+            'base_url' => "/browse/games/",
+            'per_page' => 20,
+            'total_rows' => 25000 ?? null,
+            'cur_page' => $page_num
+        ));
+
+        $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
+        $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
+    }
 }
