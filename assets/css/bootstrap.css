@@ -8791,3 +8791,8 @@ a.list-group-item-danger.active:focus {
 .panel-info .panel-heading {
     border-color: #000;
 }
+
+.padding-tb-5px {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
