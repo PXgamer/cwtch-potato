@@ -1,7 +1,8 @@
 <?php
 if ($_data['tmdb'] ?? false) {
-    foreach ($_data['tmdb']['results'] as $categories) { ?>
+    foreach ($_data['tmdb']['results'] as $cat_name => $categories) { ?>
         <div class="panel-group">
+            <h2><?= ucwords(str_replace('_', ' ', $cat_name)) ?></h2>
             <ul class="list-inline">
                 <?php foreach ($categories['results'] as $result) { ?>
                     <li class="list-unstyled">
