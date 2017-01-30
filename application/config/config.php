@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
  */
 $config['tmdb_key'] = '';
+$config['tmdb_poster_size'] = 1;
 
 /*
 |--------------------------------------------------------------------------
