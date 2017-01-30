@@ -6,7 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Cwtch Potato Config Variables
 |--------------------------------------------------------------------------
 |
-|  tmdb_key - Your API key for The Movie Database API
+|  trakt_client_id - Your API Client ID from Trakt.tv (if using Trakt) [https://trakt.tv/oauth/applications]
+|  trakt_client_secret - Your API Client Secret from Trakt.tv (if using Trakt) [https://trakt.tv/oauth/applications]
+|  igdb_key - Your API key for The Internet Game Database API [https://www.igdb.com/api]
+|  tmdb_key - Your API key for The Movie Database API [https://www.themoviedb.org/documentation/api]
+|  tmdb_poster_size - The API poster size from TMDb
 |
  */
 $config['trakt_client_id'] = '';
