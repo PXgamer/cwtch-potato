@@ -16,14 +16,8 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $_data = null;
-
-        if ($this->_user->id > 0) {
-            $_data['services'] = $this->db->select('*')
-                ->from('services')
-                ->get()
-                ->result();
-        }
+        $token = new \Tmdb\ApiToken($this->config->item('tmdb_key'));
+        $tmdb = new \Tmdb\Client($token);
 
         $view = $this->load->view('index', array('_user' => $this->_user, '_data' => $_data), true);
         $this->load->view('include/template', array('view' => $view, '_user' => $this->_user));
