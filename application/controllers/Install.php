@@ -21,6 +21,54 @@ class Install extends CI_Controller
         if ($_POST ?? false) {
             $this->load->dbforge();
 
+            $fields = array(
+                'id' => array(
+                    'type' => 'BIGINT',
+                    'unique' => true,
+                    'auto_increment' => true
+                ),
+                'option' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => '500',
+                    'unique' => true
+                ),
+                'value' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => '1000'
+                )
+            );
+            $this->dbforge->add_field($fields);
+            if ($this->dbforge->create_table('options')) {
+				$data = [
+					[
+						'option' => 'is_installed',
+						'value' => true
+					],
+					[
+						'option' => 'trakt_client_id',
+						'value' => ''
+					],
+					[
+						'option' => 'trakt_client_secret',
+						'value' => ''
+					],
+					[
+						'option' => 'igdb_key',
+						'value' => ''
+					],
+					[
+						'option' => 'tmdb_key',
+						'value' => ''
+					],
+					[
+						'option' => 'tmdb_poster_size',
+						'value' => 1
+					],
+				];
+				
+                $this->db->insert_batch('options', $data);
+            }
+
             $user_fields = array(
                 'id' => array(
                     'type' => 'BIGINT',
@@ -92,7 +140,6 @@ class Install extends CI_Controller
             $this->dbforge->add_field($services_fields);
             $this->dbforge->create_table('services');
 
-            file_put_contents('application/core/is_setup', null);
             redirectDie('/');
         }
 

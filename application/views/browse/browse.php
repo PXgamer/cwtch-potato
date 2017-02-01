@@ -16,7 +16,7 @@ if ($_data['tmdb'] ?? false) {
                            data-votes="<?= $result['vote_average'] ?? '' ?>">
                             <img class="img-rounded padding-tb-5px"
                                  src="<?= (isset($result['poster_path'])) ? $_data['tmdb']['config']['images']['secure_base_url'] .
-                                     $_data['tmdb']['config']['images']['poster_sizes'][$this->config->item('tmdb_poster_size') ?? 1] .
+                                     $_data['tmdb']['config']['images']['poster_sizes'][C::$TMDB_POSTER_SIZE ?? 1] .
                                      $result['poster_path'] : '/assets/img/no_poster.png' ?>"/>
                         </a>
                     </li>

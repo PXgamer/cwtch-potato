@@ -17,7 +17,7 @@ class Main extends CI_Controller
     public function index()
     {
         $_data = [];
-        $tokens['tmdb'] = $this->config->item('tmdb_key');
+        $tokens['tmdb'] = C::$TMDB_KEY;
         if ($tokens['tmdb'] !== '') {
             $token = new \Tmdb\ApiToken($tokens['tmdb']);
             $tmdb = new \Tmdb\Client($token);

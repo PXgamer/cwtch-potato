@@ -17,9 +17,9 @@ class Browse extends CI_Controller
     public function index()
     {
         $_data = [
-            'movies' => ($this->config->item('tmdb_key') !== '' ? true : false),
-            'tv' => ($this->config->item('tmdb_key') !== '' ? true : false),
-            'games' => ($this->config->item('igdb_key') !== '' ? true : false),
+            'movies' => (C::$TMDB_KEY !== '' ? true : false),
+            'tv' => (C::$TMDB_KEY !== '' ? true : false),
+            'games' => (C::$IGDB_KEY !== '' ? true : false),
         ];
 
         $view = $this->load->view('browse/index', array('_user' => $this->_user, '_data' => $_data), true);
@@ -33,7 +33,7 @@ class Browse extends CI_Controller
 
         $page_num = $this->uri->segment(3) ?? 1;
 
-        $tokens['tmdb'] = $this->config->item('tmdb_key');
+        $tokens['tmdb'] = C::$TMDB_KEY;
         if ($tokens['tmdb'] ?? '' !== '') {
             $token = new \Tmdb\ApiToken($tokens['tmdb']);
             $tmdb = new \Tmdb\Client($token);
@@ -65,7 +65,7 @@ class Browse extends CI_Controller
 
         $page_num = $this->uri->segment(3) ?? 1;
 
-        $tokens['tmdb'] = $this->config->item('tmdb_key');
+        $tokens['tmdb'] = C::$TMDB_KEY;
         if ($tokens['tmdb'] ?? '' !== '') {
             $token = new \Tmdb\ApiToken($tokens['tmdb']);
             $tmdb = new \Tmdb\Client($token);
@@ -97,7 +97,7 @@ class Browse extends CI_Controller
 
         $page_num = $this->uri->segment(3) ?? 1;
 
-        $tokens['igdb'] = $this->config->item('igdb_key');
+        $tokens['igdb'] = C::$IGDB_KEY;
         if ($tokens['igdb'] ?? '' !== '') {
             $igdb = new \YnotnA\Igdb\IgdbApi($tokens['igdb']);
 
