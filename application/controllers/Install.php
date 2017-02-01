@@ -11,7 +11,7 @@ class Install extends CI_Controller
 
         $this->_user = $this->u->getUserFromSession();
 
-        if (file_exists('application/core/is_setup')) {
+        if (C::$IS_INSTALLED ?? false) {
             redirectDie('/');
         }
     }
@@ -39,33 +39,33 @@ class Install extends CI_Controller
             );
             $this->dbforge->add_field($fields);
             if ($this->dbforge->create_table('options')) {
-				$data = [
-					[
-						'option' => 'is_installed',
-						'value' => true
-					],
-					[
-						'option' => 'trakt_client_id',
-						'value' => ''
-					],
-					[
-						'option' => 'trakt_client_secret',
-						'value' => ''
-					],
-					[
-						'option' => 'igdb_key',
-						'value' => ''
-					],
-					[
-						'option' => 'tmdb_key',
-						'value' => ''
-					],
-					[
-						'option' => 'tmdb_poster_size',
-						'value' => 1
-					],
-				];
-				
+                $data = [
+                    [
+                        'option' => 'is_installed',
+                        'value' => true
+                    ],
+                    [
+                        'option' => 'trakt_client_id',
+                        'value' => ''
+                    ],
+                    [
+                        'option' => 'trakt_client_secret',
+                        'value' => ''
+                    ],
+                    [
+                        'option' => 'igdb_key',
+                        'value' => ''
+                    ],
+                    [
+                        'option' => 'tmdb_key',
+                        'value' => ''
+                    ],
+                    [
+                        'option' => 'tmdb_poster_size',
+                        'value' => 1
+                    ],
+                ];
+
                 $this->db->insert_batch('options', $data);
             }
 

@@ -23,7 +23,9 @@ class C extends CI_Model
                 self::${$option} = $result['value'];
             }
         } else {
-            redirectDie('/install');
+            if ($this->uri->segment(1) !== 'install') {
+                redirectDie('/install');
+            }
         }
     }
 }
