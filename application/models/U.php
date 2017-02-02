@@ -16,6 +16,9 @@ class U extends CI_Model
 
     function getUserByName($username = '')
     {
+        if (!$this->db->table_exists('users')) {
+            return false;
+        }
         $user = $this->db->select("*")
             ->from("users")
             ->where("username", $username)
@@ -26,6 +29,9 @@ class U extends CI_Model
 
     function getUserByIdHash($id_hash = '')
     {
+        if (!$this->db->table_exists('users')) {
+            return false;
+        }
         return $this->db->select("*")
             ->from("users")
             ->where("id", $id_hash)
@@ -34,6 +40,9 @@ class U extends CI_Model
 
     function attemptLogin($username = '', $password = '')
     {
+        if (!$this->db->table_exists('users')) {
+            return false;
+        }
         $account = $this->db->query("SELECT * FROM users WHERE username = ?", array($username))->row();
         if (isset($account->password)) {
             if (password_verify($password . $account->salt, $account->password)) {
@@ -48,6 +57,9 @@ class U extends CI_Model
 
     function attemptRegister($email = '', $username = '', $password = '')
     {
+        if (!$this->db->table_exists('users')) {
+            return false;
+        }
         $data = new stdClass;
         if (strlen($username) <= 4) {
             $data->successful = false;
@@ -109,6 +121,9 @@ class U extends CI_Model
 
     function getUserData($user_id)
     {
+        if (!$this->db->table_exists('users')) {
+            return false;
+        }
         $user = $this->db->select("users.id, users.username, users.is_deleted, users.email, users.created")
             ->from("users")
             ->where("users.id", $user_id)

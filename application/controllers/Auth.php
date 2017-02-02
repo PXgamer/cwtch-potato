@@ -21,7 +21,7 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        if ($this->_user->id > 0) {
+        if ($this->_user->id ?? -1 > 0) {
             redirectDie('/');
         }
 

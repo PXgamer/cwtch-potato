@@ -17,9 +17,8 @@ class Main extends CI_Controller
     public function index()
     {
         $_data = [];
-        $tokens['tmdb'] = C::$TMDB_KEY;
-        if ($tokens['tmdb'] !== '') {
-            $token = new \Tmdb\ApiToken($tokens['tmdb']);
+        if (C::$TMDB_KEY) {
+            $token = new \Tmdb\ApiToken(C::$TMDB_KEY);
             $tmdb = new \Tmdb\Client($token);
 
             $_data['tmdb']['config'] = $tmdb->getConfigurationApi()->getConfiguration();
