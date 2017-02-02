@@ -22,10 +22,6 @@ class C extends CI_Model
                 $option = strtoupper($result['option']);
                 self::${$option} = $result['value'];
             }
-        } else {
-            if ($this->uri->segment(1) !== 'install') {
-                redirectDie('/install');
-            }
         }
     }
 }
